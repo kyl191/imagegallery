@@ -139,7 +139,7 @@ try {
 } catch (Exception $e){
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
 	echo "Oops, something went wrong with the cache. Don't worry though.";
-	$pics = readFilesFromDrive($imagedir, false);
+	$pics = readFilesFromDrive($imagedir);
 	// And show the specific error if debug is enabled.
 	if ($debug){
 		echo "Error: ".$e;
