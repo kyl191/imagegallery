@@ -191,26 +191,6 @@ if ($next > $filecount){ $next=$filecount; }
 $back=$pic-1;
 if ($back < 1){ $back=1; }
 
-// Hack for temporary load balancing.
-// Essentially, round robins the base directory from which to load the images from
-// Uses time()%<number of mirrors>
-
-// $base_array = array();
-// array_push($base_array, "http://www.twokinds.net/");
-
-// limit it to 561 files because that's all that Tom has right now - 050810, so that's all that is snyc'ed between the servers
-// if ($pic<=561){
-	// $choice = time()%count($base_array);
-	// $base = $base_array[$choice];
-	// if (isset($_GET['mirror']) && $_GET['mirror'] <= count($base_array)) {
-		// $base = $base_array[(int)$_GET['mirror']];
-		// echo "Using mirror: " . $base . "\n";
-	// }
-	// if ($debug){
-		// echo $choice . " - " . $base;
-	// }
-// }
-
 if (isset($_GET['debug'])){
 	$next .= "&debug";
 	$back .= "&debug";
