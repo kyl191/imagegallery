@@ -196,11 +196,6 @@ if (isset($_GET['debug'])){
 	$back .= "&debug";
 }
 
-if (isset($_GET['mirror']) && $_GET['mirror'] <= count($base_array)){
-	$next .= "&mirror=" . $_GET['mirror'];
-	$back .= "&mirror=" . $_GET['mirror'];
-}
-
 // Note: The navigation bar doesn't move, the image does
 // Display the image above the navigation bar
 if (strcasecmp($navplacement, "above")!=0){
