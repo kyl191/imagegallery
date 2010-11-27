@@ -41,7 +41,7 @@ $backnext=1;
 $firstlast=1;
 
 // show numbers, for none use 0
-$numbers=0;
+$numbers=1;
 
 // numbers per line
 $linelength=20;
