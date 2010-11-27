@@ -11,7 +11,7 @@
 // (at your option) any later version.                                       //
 //  A summary is available at http://creativecommons.org/licenses/GPL/2.0/   //
 // ------------------------------------------------------------------------- //
-// Edit the code below to configure the Imafe Gallery                        //
+// Edit the code below to configure the Image Gallery                        //
 // ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
@@ -95,7 +95,6 @@ if ($debug){
 // Second, determine the type of rebuild procedure and check if a rebuild is required
 
 // Check that the file list is present first though. 
-// If it isn't, well, we're going to rebuild anyway.
 if($is_present){
 	
 	// If the type is timer, check if the last modified time exceeds the maximum age between rebuilds of the list. 
@@ -112,6 +111,7 @@ if($is_present){
 			echo "Warning: rebuild_type is not set to a supported option. Please check your configuration.";
 		}
 	}
+// If the filelist isn't present, well, we're going to build it.
 } else {
 	$rebuild = true;
 }
@@ -133,7 +133,7 @@ if ($rebuild && $is_writable){
 	}
 }
 
-// try reading the filelist
+// Try reading the filelist
 // It's not guarenteed that we wrote an updated file to disk anyway
 try {
 	$pics = readFileList($filelist);
@@ -199,10 +199,7 @@ if ($back < 1){ $back=1; }
 // Uses time()%<number of mirrors>
 
 $base_array = array();
-//array_push($base_array, "http://twokindscomic.com/archive/");
-//array_push($base_array, "http://2kcomic.kyl191.net/");
 array_push($base_array, "http://www.twokinds.net/");
-//array_push($base_array, "http://2karchive.vanlaanen.com/");
 
 // limit it to 561 files because that's all that Tom has right now - 050810, so that's all that is snyc'ed between the servers
 if ($pic<=561){
@@ -271,8 +268,8 @@ if ($backnext != 0 || $arrows != 0){
 		}
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
-			if ($pic < $filecount){	echo "<a href=\"http://twokindscomic.com\" id=\"cg_last\"><span>Last</span></a>"; }
-			else { echo "<a href=\"http://twokindscomic.com\" id=\"cg_last\"><span>Last</span></a></span>"; }
+			if ($pic < $filecount){	echo "<a href=\"http://2kinds.com\" id=\"cg_last\"><span>Last</span></a>"; }
+			else { echo "<a href=\"http://2kinds.com\" id=\"cg_last\"><span>Last</span></a></span>"; }
 		}
 		echo "</p>\n";
 	}
