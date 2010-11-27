@@ -192,13 +192,15 @@ if ($next > $filecount){ $next=$filecount; }
 $back=$pic-1;
 if ($back < 1){ $back=1; }
 
+// If debug mode is enabled, make the back and forward links automatically add debug to the url
 if (isset($_GET['debug'])){
 	$next .= "&debug";
 	$back .= "&debug";
 }
 
 // Note: The navigation bar doesn't move, the image does
-// Display the image above the navigation bar
+// Display image above the navigation bar by checking the config value
+// If strcasecmp returns anything other than 0, 
 if (strcasecmp($navplacement, "above")!=0){
 	if ($pic < $filecount){ 
 		echo"\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" /></a></p>\n";
@@ -207,7 +209,7 @@ if (strcasecmp($navplacement, "above")!=0){
 	}
 }
 
-// display back and next
+// display the navigation bar
 if ($backnext != 0 || $arrows != 0){
 	if ($filecount > 1){
 		echo "<p id=\"cg_nav1\">";
@@ -317,5 +319,4 @@ function addLoadEvent(func) {
 addLoadEvent(preloader);
 </script>\n";
 }
-
 ?>
