@@ -68,18 +68,20 @@ $base = "";
 // Do not edit below this line
 // ------------------------------------------------------------------------- //
 
+// Import the filelist handling functions.
 require("functions.inc.php");
 
 // Check for a debug option. Because this doesn't expose sensitive data, a password shouldn't be needed.
 $debug = isset($_GET['debug']);
 
-// Check if the index needs to be rebuilt
+// Used if the filelist needs to be rebuilt, for now we'll assume no.
 $rebuild = false;
 
-// Establish whether the file is present and writable.
+// Establish whether the filelist is present and/or writable.
 $is_present = file_exists($filelist);
 $is_writable = is_writable($filelist);
 
+// Print a debug message if the filelist isn't present or writable.
 if ($debug){
 	
 	if(!$is_present){
@@ -92,11 +94,9 @@ if ($debug){
 	
 }
 
-// Second, determine the type of rebuild procedure and check if a rebuild is required
-
+// Determine the type of rebuild procedure and check if a rebuild is required
 // Check that the file list is present first though. 
 if($is_present){
-	
 	// If the type is timer, check if the last modified time exceeds the maximum age between rebuilds of the list. 
 	if (strcasecmp($rebuild_type, "timer")==0){
 			$rebuild = ((time()-filemtime($filelist))>$rebuild_time);
@@ -116,7 +116,9 @@ if($is_present){
 	$rebuild = true;
 }
 
-// Force rebuild if the user tells us to
+// Force rebuild if the user tells us to though
+// Future addition: Only allow a rebuild to be forced if debug is enabled?
+// Unlikely because anyone can view the debug data, so it's just obfusication
 if(isset($_GET['rebuild'])){
 	$rebuild = true;
 }
@@ -124,7 +126,6 @@ if(isset($_GET['rebuild'])){
 // Once we've run through the decision tree, build the file list if necessary.
 // However, no sense reading in all the filenames from the drive if we can't write the file out, so check if the file is writable before building the list
 if ($rebuild && $is_writable){
-	// Read the files from the drive, sort the list, then write the list back out
 	$images = readFilesFromDrive($imagedir);
 	sort($images);
 	writeFileList($images,$filelist);
