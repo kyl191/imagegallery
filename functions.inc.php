@@ -20,13 +20,13 @@ function readFilesFromDrive($imagedirpath, $onlynumeric=true){
 	return $images; 
 }
 
-// Dump the array of filenames to the drive
+// Dump the array to the drive
 // But use an exclusive lock so we don't have race conditions.
-function writeFileList($images,$path){
-	file_put_contents($path,serialize($images),LOCK_EX);	
+function writeFileList($array,$path){
+	file_put_contents($path,serialize($array),LOCK_EX);
 }
 
 function readFileList($path){
-	return unserialize(file_get_contents($path));	
+	return unserialize(file_get_contents($path));
 }
 ?>
