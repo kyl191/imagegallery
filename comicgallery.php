@@ -13,7 +13,7 @@
 // ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
-$imagedir="./";
+$imagedir="comics";
 
 // To start at the last image, use "last". To start from the first image, use "start".
 $startimage="last";
@@ -41,7 +41,7 @@ $backnext=1;
 $firstlast=1;
 
 // show numbers, for none use 0
-$numbers=1;
+$numbers=0;
 
 // numbers per line
 $linelength=20;
