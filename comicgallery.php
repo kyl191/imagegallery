@@ -152,11 +152,10 @@ try {
 $filecount=count($pics);
 
 // If debug is enabled, take the time to print some info.
-// Number of files, time & date of cache file, and how old the cache file is
 if($debug){
-	echo $filecount."\n";
-	echo date(DATE_RFC2822, filemtime($filelist))."\n";
-	echo (time()-filemtime($filelist))."\n";
+	echo "Number of image files: ".$filecount."\n";
+	echo "Filelist last modified: ".date(DATE_RFC2822, filemtime($filelist))."\n";
+	echo "Age of filelist: ".(time()-filemtime($filelist))."\n";
 }
 
 // See what image the user is asking for
