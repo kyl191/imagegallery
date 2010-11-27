@@ -124,9 +124,10 @@ if(isset($_GET['rebuild'])){
 // Once we've run through the decision tree, build the file list if necessary.
 // However, no sense reading in all the filenames from the drive if we can't write the file out, so check if the file is writable before building the list
 if ($rebuild && $is_writable){
-	$images = readFilesFromDrive($imagedir, false);
+	$images = readFilesFromDrive($imagedir);
 	sort($images);
-	writeFileList($images,$filelist);
+	print_r($images);
+	echo writeFileList($images,$filelist);
 	if ($debug){
 		echo "Notice: Wrote file list to ".$filelist."\n";
 	}
@@ -139,7 +140,7 @@ try {
 } catch (Exception $e){
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
 	echo "Oops, something went wrong with the cache. Don't worry though.";
-	$pics = readFilesFromDrive($imagedir);
+	$pics = readFilesFromDrive($imagedir, false);
 	// And show the specific error if debug is enabled.
 	if ($debug){
 		echo "Error: ".$e;
