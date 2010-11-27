@@ -1,6 +1,6 @@
 <?php 
 // Dump all filenames to an array
-function readFilesFromDrive($imagedirpath, $onlynumeric = False){
+function readFilesFromDrive($imagedirpath, $onlynumeric = true){
 	$images=array();
 	// Open the directory
 	$imagedir=opendir($imagedirpath);
@@ -10,7 +10,12 @@ function readFilesFromDrive($imagedirpath, $onlynumeric = False){
 		// However, we're also doing numeric comparisons!
 		echo $file."<br>";
 		if ((strcasecmp(substr($file,-4),".jpg") == 0 || strcasecmp(substr($file,-4),".gif") == 0 || strcasecmp(substr($file,-4),".png") == 0 )) {
-			if ($onlynumeric && is_numeric(substr($file,0,8))) {
+			echo $file."<br>";
+			if ($onlynumeric){
+				if (is_numeric(substr($file,0,8))) {
+					array_push($images,$file);
+				}
+			} else {
 				array_push($images,$file);
 			}
 		}
