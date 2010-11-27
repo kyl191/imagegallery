@@ -9,7 +9,8 @@ function readFilesFromDrive($imagedirpath){
 	
 	//	read directory into image array
 	while (($file = readdir($imagedir))!==false) {
-		//	filter for jpg, gif or png files... 	
+		// filter for jpg, gif or png files... 
+		// However, we're also doing numeric comparisons!
 		if ((strcasecmp(substr($file,-4),".jpg") == 0 || strcasecmp(substr($file,-4),".gif") == 0 || strcasecmp(substr($file,-4),".png") == 0 ) && (is_numeric(substr($file,0,8)))) {
 			array_push($images,$file);
 		}
