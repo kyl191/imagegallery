@@ -13,7 +13,7 @@
 // ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
-$imagedir="comics";
+$imagedir="./";
 
 // To start at the last image, use "last". To start from the first image, use "start".
 $startimage="last";
@@ -124,7 +124,7 @@ if(isset($_GET['rebuild'])){
 // Once we've run through the decision tree, build the file list if necessary.
 // However, no sense reading in all the filenames from the drive if we can't write the file out, so check if the file is writable before building the list
 if ($rebuild && $is_writable){
-	$images = readFilesFromDrive($imagedir);
+	$images = readFilesFromDrive($imagedir, false);
 	sort($images);
 	writeFileList($images,$filelist);
 	if ($debug){

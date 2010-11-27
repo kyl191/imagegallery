@@ -1,6 +1,6 @@
 <?php 
 // Dump all filenames to an array
-function readFilesFromDrive($imagedirpath, $onlynumeric=true){
+function readFilesFromDrive($imagedirpath, $onlynumeric=false){
 	$images=array();
 	// Open the directory
 	$imagedir=opendir($imagedirpath);
