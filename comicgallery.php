@@ -19,14 +19,14 @@ $imagedir="comics";
 $startimage="last";
 
 // Copyright name to display, for none use " "
-$copyright=" ";
+$copyright="";
 
 // File to store the list of filenames
 $filelist = "/tmp/imagegalleryfilelist.dat";
 
 // Creative Commons license, for none use " "
-// example: "http://creativecommons.org/licenses/by/2.0/"
-$creativecommons="http://creativecommons.org/licenses/by-nc-sa/3.0/deed";
+// example: "http://creativecommons.org/licenses/by-nc-sa/3.0/deed"
+$creativecommons="";
 
 // type of divider, for none use " "
 $divider="&middot;";
