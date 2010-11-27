@@ -212,7 +212,7 @@ if (strcasecmp($navplacement, "above")!=0){
 }
 
 // display the navigation bar
-// TODO: Test it to make sure it works! :P
+// TODO: Test it to make sure it works! :P 
 if ($backnext != 0 || $arrows != 0){
 	if ($filecount > 1){
 		echo "<p id=\"cg_nav1\">";
