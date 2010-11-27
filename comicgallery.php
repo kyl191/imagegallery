@@ -124,10 +124,9 @@ if(isset($_GET['rebuild'])){
 // Once we've run through the decision tree, build the file list if necessary.
 // However, no sense reading in all the filenames from the drive if we can't write the file out, so check if the file is writable before building the list
 if ($rebuild && $is_writable){
-	$images = readFilesFromDrive($imagedir,false);
+	$images = readFilesFromDrive($imagedir);
 	sort($images);
-	print_r($images);
-	echo writeFileList($images,$filelist);
+	writeFileList($images,$filelist);
 	if ($debug){
 		echo "Notice: Wrote file list to ".$filelist."\n";
 	}
