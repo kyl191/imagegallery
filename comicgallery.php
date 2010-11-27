@@ -198,15 +198,17 @@ if (isset($_GET['debug'])){
 	$back .= "&debug";
 }
 
+// Prepare the image source and links
+if ($pic < $filecount){ 
+	$image="\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" /></a></p>\n";
+} else {
+	$image="\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
+}
+
 // Note: The navigation bar doesn't move, the image does
-// Display image above the navigation bar by checking the config value
-// If strcasecmp returns anything other than 0, 
+// Display the image before the navigation bar if configured that way
 if (strcasecmp($navplacement, "above")!=0){
-	if ($pic < $filecount){ 
-		echo"\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" /></a></p>\n";
-	} else {
-		echo"\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
-	}
+	echo $image;
 }
 
 // display the navigation bar
@@ -277,11 +279,7 @@ if ($numbers != 0){
 
 //  display image below nav
 if (strcasecmp($navplacement,"above")==0){
-	if ($pic < $filecount){ 
-		echo"\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><image src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" border=\"0\"></a></p>\n";
-	} else {
-		echo"\n<p id=\"cg_img\"><image src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
-	}
+	echo $image;
 }
 
 
