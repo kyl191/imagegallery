@@ -285,12 +285,10 @@ if (strcasecmp($navplacement,"above")==0){
 
 // display copyright
 echo "<p id=\"cg_credits\">";
-if ($creativecommons != " "){ echo "<a href=\"".$creativecommons."\" title=\"Creative Commons License\">Some Rights Reserved</a> ".$divider." "; }	
-else {
-	if ($copyright != " "){ echo "&copy; ".$copyright." ".$divider." "; }
-}
+if (strcasecmp($creativecommons, "")!=0){ echo "<a href=\"".$creativecommons."\" title=\"Creative Commons License\">Some Rights Reserved</a> ".$divider." "; }	
+if (strcasecmp($copyright, "")!=0){ echo "&copy; ".$copyright." ".$divider." "; }
 // Attribution optional, but requested.
- echo "Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a></p>\n";
+echo "Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a></p>\n";
 
 // Preload the next comic image
 if ($preload){
