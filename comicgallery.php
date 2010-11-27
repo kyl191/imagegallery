@@ -11,13 +11,11 @@
 // (at your option) any later version.                                       //
 //  A summary is available at http://creativecommons.org/licenses/GPL/2.0/   //
 // ------------------------------------------------------------------------- //
-// Edit the code below to configure the Image Gallery                        //
-// ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
 $imagedir="comics";
 
-// To start at the last image use "last"
+// To start at the last image, use "last". To start from the first image, use "start".
 $startimage="last";
 
 // Copyright name to display, for none use " "
@@ -28,7 +26,7 @@ $filelist = "/tmp/imagegalleryfilelist.dat";
 
 // Creative Commons license, for none use " "
 // example: "http://creativecommons.org/licenses/by/2.0/"
-$creativecommons=" ";
+$creativecommons="http://creativecommons.org/licenses/by-nc-sa/3.0/deed";
 
 // type of divider, for none use " "
 $divider="&middot;";
@@ -65,7 +63,7 @@ $rebuild_time=300;
 $base = "";
 
 // ------------------------------------------------------------------------- //
-// Do not edit below this line
+// Do not edit below this line.
 // ------------------------------------------------------------------------- //
 
 // Import the filelist handling functions.
@@ -161,7 +159,7 @@ if($debug){
 // See what image the user is asking for
 // Check that a) the user asked for something, and b) he gave a number
 if (isset($_GET['p']) && is_numeric($_GET['p'])){
-	// Just cast the desired image number to an int for internal storage.
+	// Just cast the desired image number to an int for internal storage - technically not necessary, but it will save a few string conversions later.
 	$pic=(int)$_GET['p'];
 	// In the event that the number specified was larger than the number of images
 	// Give them a 404 error and set the number to the largest file
@@ -169,18 +167,17 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 		header('HTTP/1.0 404 Not Found');
 		$pic = $filecount;
 	}
-// Otherwise, start from either the first image or the last image, depending on the config
+// Otherwise, he hasn't specified an image.
+// So start from the beginning or end, depending on the config
 } else { 
 	if ($startimage!="last"){ $pic=1; }
 	else { $pic=$filecount; }
 }
 
-
 // Get the requested image file name
 $current=$pics[$pic-1];
 
 // Determine if we should preload the next image
-
 if ($pic < $filecount){
 	$preload = true;
 	$nextimg = $pics[$pic];
