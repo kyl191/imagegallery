@@ -178,6 +178,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 $current=$pics[$pic-1];
 
 // Determine if we should preload the next image
+// Future enhancement: Also preload the previous image - if someone is working their way *back* through the archive...
 if ($pic < $filecount){
 	$preload = true;
 	$nextimg = $pics[$pic];
