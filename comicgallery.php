@@ -22,7 +22,7 @@ $startimage="last";
 $copyright="";
 
 // File to store the list of filenames
-$filelist = "/tmp/imagegalleryfilelist.dat";
+$filelist = "imagegalleryfilelist.dat";
 
 // Creative Commons license, for none use " "
 // example: "http://creativecommons.org/licenses/by-nc-sa/3.0/deed"
@@ -95,11 +95,9 @@ $is_writable = is_writable($filelist);
 
 // Print a debug message if the filelist isn't present or writable.
 if ($debug){
-	
 	if(!$is_present){
 		echo "Warning: File list ". $filelist ." is not present. This file must be present for this script to work.";
 	}
-	
 	if (!$is_writable){
 		echo "Warning: File list ". $filelist ." is not writable. Check your permissions. (This file <b>must</b> be writable by the web server.)";
 	}
