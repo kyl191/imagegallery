@@ -77,7 +77,7 @@ $rebuild = false;
 
 // Establish whether the filelist is present and/or writable.
 $is_present = file_exists($filelist);
-if(!is_present){
+if(!$is_present){
 	try {
 		if (!touch($filelist)){
 			throw new Exception("Error touching file "+$filelist);
