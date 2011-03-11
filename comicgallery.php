@@ -35,10 +35,10 @@ $divider="&middot;";
 // show arrows, for none use 0
 $arrows=1;
 
-// show back and next, for none use 0
+// show 'back' and 'next' links, for none use 0
 $backnext=1;
 
-// show first and last, for none use 0
+// show 'first' and 'last' links, for none use 0
 $firstlast=1;
 
 // show numbers, for none use 0
@@ -78,11 +78,15 @@ $rebuild = false;
 
 // Establish whether the filelist is present and/or writable.
 $is_present = file_exists($filelist);
+// If it's not present, try to create it! Duh!
 if(!$is_present){
 	try {
+		// See if we have write access to the folder at least, or the filelist exists.
 		if (!touch($filelist)){
 			throw new Exception("Error touching file "+$filelist);
 		}
+		// If we have write access to the folder, we should have write access to the file.
+		// But what the heck. Try it anyway, just to be sure...
 		if (!$handle = fopen($filelist,"a+")){
 			throw new Exception("Error opening file "+$filelist);
 		} else {
