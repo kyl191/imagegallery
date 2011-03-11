@@ -161,10 +161,15 @@ if ($rebuild){
 	if ($is_writable){
 		$images = readFilesFromDrive($imagedir);
 		sort($images);
-		writeFileList($images,$filelist);
-		$expired = false;
-		if ($debug){
-			echo "Notice: Wrote file list to ".$filelist."<br>";
+		if (writeFileList($images,$filelist)){
+			$expired = false;
+			if ($debug){
+				echo "Notice: Wrote file list to ".$filelist."<br>";
+			}
+		} else {
+			if ($debug){
+				echo "Notice: Failed to write file list to ".$filelist."<br>";
+			}
 		}
 	} else {
 		if ($debug){
