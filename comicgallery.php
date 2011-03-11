@@ -186,6 +186,8 @@ $pics = readFileList($filelist);
 if (!$pics||$expired)	{
 	echo "Oops, something went wrong with the cache. Don't worry though.<br>";
 	$pics = readFilesFromDrive($imagedir);
+	sort($pics);
+	reset($pics);
 	// And show the specific error if debug is enabled.
 	if ($debug){
 		echo "Error: Filelist couldn't be read, check the permissions on the folder & filelist file.<br>";
