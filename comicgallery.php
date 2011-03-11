@@ -93,7 +93,7 @@ if(!$is_present){
 			fclose($handle);
 		}
 	} catch (Exception $e) {
-		die("Error: " + $e->getMessage());
+		echo "Error: " + $e->getMessage();
 	}
 }
 $is_writable = is_writable($filelist);
