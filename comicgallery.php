@@ -110,7 +110,7 @@ if(!$is_present){
 		}
 	}
 }
-}
+
 
 $is_writable = is_writable($filelist);
 
