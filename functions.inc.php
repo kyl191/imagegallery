@@ -27,7 +27,7 @@ function readFilesFromDrive($imagedirpath, $onlynumeric = true){
 // Dump the array to the drive
 // But use an exclusive lock so we don't have race conditions.
 function writeFileList($array,$path){
-	file_put_contents($path,serialize($array),LOCK_EX);
+	@file_put_contents($path,serialize($array),LOCK_EX);
 }
 
 function readFileList($path){
