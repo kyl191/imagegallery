@@ -151,10 +151,10 @@ if ($rebuild && $is_writable){
 
 // Try reading the filelist
 // It's not guarenteed that we wrote an updated file to disk anyway
-try {
-	$pics = readFileList($filelist);
-} catch (Exception $e){
+$pics = readFileList($filelist);
+
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
+if (!$pics)	{
 	echo "Oops, something went wrong with the cache. Don't worry though.";
 	$pics = readFilesFromDrive($imagedir);
 	// And show the specific error if debug is enabled.
@@ -162,6 +162,7 @@ try {
 		echo "Error: ".$e;
 	}
 }
+
 
 // Get the number of files in the folder for use in the navigation
 $filecount=count($pics);
