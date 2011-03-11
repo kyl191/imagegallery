@@ -115,6 +115,7 @@ if($is_present){
 	// If the type is timer, check if the last modified time exceeds the maximum age between rebuilds of the list. 
 	if (strcasecmp($rebuild_type, "timer")==0){
 			$rebuild = ((time()-filemtime($filelist))>$rebuild_time);
+			$expired = ((time()-filemtime($filelist))>$rebuild_time);
 			if ($debug){
 				echo ("Rebuild: ".(time()-filemtime($filelist))>$rebuild_time);
 			}
@@ -140,12 +141,19 @@ if(isset($_GET['rebuild'])){
 
 // Once we've run through the decision tree, build the file list if necessary.
 // However, no sense reading in all the filenames from the drive if we can't write the file out, so check if the file is writable before building the list
-if ($rebuild && $is_writable){
-	$images = readFilesFromDrive($imagedir);
-	sort($images);
-	writeFileList($images,$filelist);
-	if ($debug){
-		echo "Notice: Wrote file list to ".$filelist."<br>";
+if ($rebuild){
+	if ($is_writable){
+		$images = readFilesFromDrive($imagedir);
+		sort($images);
+		writeFileList($images,$filelist);
+		$expired = false;
+		if ($debug){
+			echo "Notice: Wrote file list to ".$filelist."<br>";
+		}
+	} else {
+		if ($debug){
+			echo "Error! ".$filelist." not writable, but we need to update it!<br>";
+		}
 	}
 }
 
@@ -154,7 +162,7 @@ if ($rebuild && $is_writable){
 $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
-if (!$pics)	{
+if (!$pics||$expired)	{
 	echo "Oops, something went wrong with the cache. Don't worry though.<br>";
 	$pics = readFilesFromDrive($imagedir);
 	// And show the specific error if debug is enabled.
