@@ -101,10 +101,10 @@ $is_writable = is_writable($filelist);
 // Print a debug message if the filelist isn't present or writable.
 if ($debug){
 	if(!$is_present){
-		echo "Warning: File list ". $filelist ." is not present. This file must be present for this script to work.";
+		echo "Warning: File list ". $filelist ." is not present. This file must be present for this script to work.<br>";
 	}
 	if (!$is_writable){
-		echo "Warning: File list ". $filelist ." is not writable. Check your permissions. (This file <b>must</b> be writable by the web server.)";
+		echo "Warning: File list ". $filelist ." is not writable. Check your permissions. (This file <b>must</b> be writable by the web server.)<br>";
 	}
 	
 }
@@ -123,7 +123,7 @@ if($is_present){
 	} else {
 		// But if we've managed to get this far, something's wrong with the rebuild type option.
 		if ($debug){
-			echo "Warning: rebuild_type is not set to a supported option. Please check your configuration.";
+			echo "Warning: rebuild_type is not set to a supported option. Please check your configuration.<br>";
 		}
 	}
 // If the filelist isn't present, well, we're going to build it.
@@ -145,7 +145,7 @@ if ($rebuild && $is_writable){
 	sort($images);
 	writeFileList($images,$filelist);
 	if ($debug){
-		echo "Notice: Wrote file list to ".$filelist."\n";
+		echo "Notice: Wrote file list to ".$filelist."<br>";
 	}
 }
 
@@ -155,11 +155,11 @@ $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
 if (!$pics)	{
-	echo "Oops, something went wrong with the cache. Don't worry though.";
+	echo "Oops, something went wrong with the cache. Don't worry though.<br>";
 	$pics = readFilesFromDrive($imagedir);
 	// And show the specific error if debug is enabled.
 	if ($debug){
-		echo "Error: ".$e;
+		echo "Error: Filelist couldn't be read, check the permissions on the folder & filelist file.<br>";
 	}
 }
 
