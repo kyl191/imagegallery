@@ -31,6 +31,6 @@ function writeFileList($array,$path){
 }
 
 function readFileList($path){
-	return unserialize(file_get_contents($path));
+	return @unserialize(file_get_contents($path));
 }
 ?>
