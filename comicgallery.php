@@ -265,16 +265,19 @@ if (strcasecmp($navplacement, "above")!=0){
 if ($backnext != 0 || $arrows != 0){
 	if ($filecount > 1){
 		echo "<p id=\"cg_nav1\">";
+		// Display the 'First Comic' Link if First/Last is enabled
 		if ($firstlast != 0){ 
 			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\"><span>First</span></a>"; }
 			else { echo "<span id=\"cg_first\"><span>First</span></span>"; }
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		}
+		// If there is more than 1 pic, print either a back arrow or a back links
 		if ($pic > 1){	
 			echo "<a href=\"?p=".$back."\" id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
 			echo "</span></a>";
+		} else { // Otherwise, just print the arrows or 'back' with no link
 		} else {
 			echo "<span id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
@@ -282,6 +285,7 @@ if ($backnext != 0 || $arrows != 0){
 			echo "</span></span>";
 		}
 		echo "<span class=\"cg_divider\"> ".$divider." </span>";
+		// Same thing for the 'Next Comic' links...
 		if ($pic < $filecount){	
 			echo "<a href=\"?p=".$next."\" id=\"cg_next\"><span>";
 			if ($backnext != 0) { echo "Next"; }
