@@ -80,22 +80,38 @@ $rebuild = false;
 $is_present = file_exists($filelist);
 // If it's not present, try to create it! Duh!
 if(!$is_present){
-	try {
-		// See if we have write access to the folder at least, or the filelist exists.
-		if (!@touch($filelist)){
-			throw new Exception("Error touching file "+$filelist);
+	if ($debug){
+		try {
+			// See if we have write access to the folder at least, or the filelist exists.
+			if (!touch($filelist)){
+				throw new Exception("Error touching file "+$filelist);
+			}
+			// If we have write access to the folder, we should have write access to the file.
+			// But what the heck. Try it anyway, just to be sure...
+			if (!$handle = fopen($filelist,"a+")){
+				throw new Exception("Error opening file "+$filelist);
+			} else {
+				fclose($handle);
+			}
+		} catch (Exception $e) {
+			echo "Error: " + $e->getMessage();
 		}
-		// If we have write access to the folder, we should have write access to the file.
-		// But what the heck. Try it anyway, just to be sure...
-		if (!$handle = @fopen($filelist,"a+")){
-			throw new Exception("Error opening file "+$filelist);
-		} else {
-			fclose($handle);
+	else {
+		try {
+			if (!@touch($filelist)){
+				throw new Exception("");
+			}
+			if (!@$handle = fopen($filelist,"a+")){
+				throw new Exception("");
+			} else {
+				fclose($handle);
+			}
+		} catch (Exception $e) {
 		}
-	} catch (Exception $e) {
-		echo "Error: " + $e->getMessage();
 	}
 }
+}
+
 $is_writable = is_writable($filelist);
 
 // Print a debug message if the filelist isn't present or writable.
