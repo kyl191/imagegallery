@@ -96,7 +96,7 @@ if(!$is_present){
 		} catch (Exception $e) {
 			echo "Error: " + $e->getMessage();
 		}
-	else {
+	} else {
 		try {
 			if (!@touch($filelist)){
 				throw new Exception("");
