@@ -131,6 +131,7 @@ if(!$is_present){
 			echo "Error: " + $e->getMessage();
 		}
 	} else {
+		// Try to create it. If we can't create it, fail silently.
 		try {
 			if (!@touch($filelist)){
 				throw new Exception("");
@@ -182,8 +183,6 @@ if($is_present){
 }
 
 // Force rebuild if the user tells us to though
-// Future addition: Only allow a rebuild to be forced if debug is enabled?
-// Unlikely because anyone can view the debug data, so it's just obfusication
 if(isset($_GET['rebuild'])){
 	$rebuild = true;
 }
@@ -211,7 +210,9 @@ if ($rebuild){
 }
 
 // Try reading the filelist
-// It's not guarenteed that we wrote an updated file to disk anyway
+// It's not guarenteed that we wrote an updated file to disk anyway though
+// TODO: Find someway to detect an out-of-date list? Maybe if the file isn't writable, that's a sign the filelist isn't to be trusted?
+// Also, if the file *exists*? How about is_writable/is_present?
 $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
