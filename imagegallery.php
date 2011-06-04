@@ -343,6 +343,7 @@ if ($backnext != 0 || $arrows != 0){
 			if ($arrows != 0) { echo " &raquo;"; }
 			echo "</span></span>";
 		}
+		// Print the link to the last image
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 			if ($pic < $filecount){	echo "<span id=\"cg_last\"><a href=\"?p=".$filecount."><span>Last</span></a></span>"; }
@@ -390,6 +391,7 @@ if (strcasecmp($creativecommons, "")!=0){
 }	
 if (strcasecmp($copyright, "")!=0){
 	echo "&copy; ".$copyright." ".$divider." ";
+}
 // Attribution optional, but requested.
 echo "<br />Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a>";
 // Close the span
