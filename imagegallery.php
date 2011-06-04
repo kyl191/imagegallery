@@ -247,7 +247,9 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 	// In the event that the number specified was larger than the number of images
 	// Give them a 404 error and set the number to the largest file
 	if ($pic>$filecount){
-		header('HTTP/1.0 404 Not Found');
+		// The header does nothing since we've already started output.
+		// Keep it to remind me to make it work when merging the two files though.
+		// header('HTTP/1.0 404 Not Found');
 		$pic = $filecount;
 	}
 	if ($pic<0){
