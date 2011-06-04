@@ -325,7 +325,6 @@ if ($backnext != 0 || $arrows != 0){
 			if ($backnext != 0) { echo "Back"; }
 			echo "</span></a>";
 		} else { // Otherwise, we're showing the current pic, so there's no back link.
-		} else {
 			echo "<span id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
