@@ -250,6 +250,12 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 		header('HTTP/1.0 404 Not Found');
 		$pic = $filecount;
 	}
+	if ($pic<0){
+		// We've gotten a negative index. 
+		// Since we need to work back, subtract the number provided from the number of files 
+		// Since it's already negative though (we checked for less than 0), simply add the negative number to the number of files
+		$pic = $filecount + $pic;
+	}
 // Otherwise, he hasn't specified an image.
 // So start from the beginning or end, depending on the config
 } else { 
