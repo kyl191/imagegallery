@@ -47,7 +47,8 @@ $numbers=0;
 // numbers per line
 $linelength=20;
 
-// navigation position, for above use "above"
+// navigation position, for above the image use "above", otherwise use "below"
+// Note: It defaults to below
 $navplacement="below";
 
 // Type of rebuild 
