@@ -280,9 +280,13 @@ if ($pic < $filecount){
 
 // Set up the next and last buttons, and make sure they're sane
 $next=$pic+1;
-if ($next > $filecount){ $next=$filecount; }
+if ($next > $filecount){
+	$next=$filecount; 
+}
 $back=$pic-1;
-if ($back < 1){ $back=1; }
+if ($back < 1){
+	$back=1;
+}
 
 // If debug mode is enabled, make the back and forward links automatically add debug to the url
 if (isset($_GET['debug'])){
@@ -382,8 +386,11 @@ if (strcasecmp($navplacement,"above")==0){
 
 // display copyright
 echo "<p id=\"cg_credits\">";
-if (strcasecmp($creativecommons, "")!=0){ echo "<a href=\"".$creativecommons."\" title=\"Creative Commons License\">Some Rights Reserved</a> ".$divider.""; }	
-if (strcasecmp($copyright, "")!=0){ echo "&copy; ".$copyright." ".$divider." "; }
+if (strcasecmp($creativecommons, "")!=0){
+	echo "<a href=\"".$creativecommons."\" title=\"Creative Commons License\">Some Rights Reserved</a> ".$divider."";
+}	
+if (strcasecmp($copyright, "")!=0){
+	echo "&copy; ".$copyright." ".$divider." ";
 // Attribution optional, but requested.
 echo "<br />Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a></p>\n";
 
