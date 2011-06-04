@@ -391,7 +391,9 @@ if (strcasecmp($creativecommons, "")!=0){
 if (strcasecmp($copyright, "")!=0){
 	echo "&copy; ".$copyright." ".$divider." ";
 // Attribution optional, but requested.
-echo "<br />Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a></p>\n";
+echo "<br />Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a>";
+// Close the span
+echo "</p>\n";
 
 // Preload the next comic image
 if ($preload){
