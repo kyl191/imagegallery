@@ -165,9 +165,8 @@ if($is_present){
 	// If the type is timer, check if the last modified time exceeds the maximum age between rebuilds of the list. 
 	if (strcasecmp($rebuild_type, "timer")==0){
 			$rebuild = ((time()-filemtime($filelist))>$rebuild_time);
-			$expired = ((time()-filemtime($filelist))>$rebuild_time);
 			if ($debug){
-				echo ("Rebuild: ".(time()-filemtime($filelist))>$rebuild_time);
+				echo ("Rebuild: ".$rebuild);
 			}
 	} else if (strcasecmp($rebuild_type, "triggered")==0){
 		// If the rebuild type is "triggered", don't do anything because we're going to check for 'rebuild' in the query string later
@@ -196,7 +195,6 @@ if ($rebuild){
 		$images = readFilesFromDrive($imagedir);
 		sort($images);
 		if (writeFileList($images,$filelist)){
-			$expired = false;
 			if ($debug){
 				echo "Notice: Wrote file list to ".$filelist."<br>";
 			}
@@ -217,7 +215,7 @@ if ($rebuild){
 $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
-if (!$pics||$expired)	{
+if (!$pics)	{
 	echo "Oops, something went wrong with the cache. Don't worry though.<br>";
 	$pics = readFilesFromDrive($imagedir);
 	sort($pics);
