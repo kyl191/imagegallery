@@ -318,13 +318,13 @@ if ($backnext != 0 || $arrows != 0){
 			else { echo "<span id=\"cg_first\"><span>First</span></span>"; }
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		}
-		// If there is more than 1 pic, print either a back arrow or a back links
+		// If the current pic is >1, print either a back arrow or a back link
 		if ($pic > 1){	
 			echo "<a href=\"?p=".$back."\" id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
 			echo "</span></a>";
-		} else { // Otherwise, just print the arrows or 'back' with no link
+		} else { // Otherwise, we're showing the current pic, so there's no back link.
 		} else {
 			echo "<span id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
@@ -353,7 +353,7 @@ if ($backnext != 0 || $arrows != 0){
 	}
 }
 
-// display numbers
+// display links to individual pages
 if ($numbers != 0){
 	if ($filecount > 1){
 		//	display textlinks
@@ -384,7 +384,7 @@ if (strcasecmp($navplacement,"above")==0){
 }
 
 
-// display copyright
+// display copyright info
 echo "<p id=\"cg_credits\">";
 if (strcasecmp($creativecommons, "")!=0){
 	echo "<a href=\"".$creativecommons."\" title=\"Creative Commons License\">Some Rights Reserved</a> ".$divider."";
