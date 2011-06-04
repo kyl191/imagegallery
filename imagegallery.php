@@ -345,8 +345,8 @@ if ($backnext != 0 || $arrows != 0){
 		}
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
-			if ($pic < $filecount){	echo "<a href=\"http://2kinds.com\" id=\"cg_last\"><span>Last</span></a>"; }
-			else { echo "<a href=\"http://2kinds.com\" id=\"cg_last\"><span>Last</span></a></span>"; }
+			if ($pic < $filecount){	echo "<span id=\"cg_last\"><a href=\"?p=".$filecount."><span>Last</span></a></span>"; }
+			else { echo "<span id=\"cg_last\"><span>Last</span></span>"; }
 		}
 		echo "</p>\n";
 	}
