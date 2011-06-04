@@ -241,6 +241,7 @@ if($debug){
 
 // See what image the user is asking for
 // Check that a) the user asked for something, and b) he gave a number
+// Enhancement: Support "?p=first" & "?p=last"? 
 if (isset($_GET['p']) && is_numeric($_GET['p'])){
 	// Just cast the desired image number to an int for internal storage - technically not necessary, but it will save a few string conversions later.
 	$pic=(int)$_GET['p'];
@@ -309,6 +310,7 @@ if (strcasecmp($navplacement, "above")!=0){
 
 // display the navigation bar
 // TODO: Test it to make sure it works! :P 
+// TODO: Wait a moment. What's with the duplicate <span>s and <a href="" id="">s?
 if ($backnext != 0 || $arrows != 0){
 	if ($filecount > 1){
 		echo "<p id=\"cg_nav1\">";
