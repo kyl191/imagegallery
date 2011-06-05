@@ -78,7 +78,7 @@ function readFilesFromDrive($imagedirpath, $onlynumeric = true){
 		// Read directory into image array
 		while (($file = readdir($imagedir))!==false) {
 			// filter for jpg, gif or png files... 
-			// However, we're also doing numeric comparisons!
+			// However, we're also doing numeric comparisons to grab the date!
 			if ((strcasecmp(substr($file,-4),".jpg") == 0 || strcasecmp(substr($file,-4),".gif") == 0 || strcasecmp(substr($file,-4),".png") == 0 )) {
 				if ($onlynumeric){
 					if (is_numeric(substr($file,0,8))) {
@@ -230,6 +230,8 @@ if (!$pics)	{
 // Get the number of files in the folder for use in the navigation
 $filecount=count($pics);
 
+// If there's no image, assume the webadmin hasn't put any images in yet.
+// Display a message to that effect.
 if ($filecount<1) {
 	echo "Hmm. We didn't find any images. Did you add your images to ".$imagedir."?<br />";
 }
