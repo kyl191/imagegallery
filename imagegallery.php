@@ -308,6 +308,9 @@ if ($pic < $filecount){
 	$image="\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
 }
 
+// Show what image we're on:
+echo "&middot Page ".$pic." of ".$filecount."&middot";
+
 // Note: The navigation bar doesn't move, the image does
 // Display the image before the navigation bar if configured that way
 if (strcasecmp($navplacement, "above")!=0){
