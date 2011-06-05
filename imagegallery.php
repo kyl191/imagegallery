@@ -327,34 +327,34 @@ if ($backnext != 0 || $arrows != 0){
 		}
 		// If the current pic is >1, print either a back arrow or a back link
 		if ($pic > 1){	
-			echo "<a href=\"?p=".$back."\" id=\"cg_back\"><span>";
+			echo "<a href=\"?p=".$back."\" id=\"cg_back\">";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
-			echo "</span></a>";
+			echo "</a>";
 		} else { // Otherwise, we're showing the current pic, so there's no back link.
-			echo "<span id=\"cg_back\"><span>";
+			echo "<span id=\"cg_back\">";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
-			echo "</span></span>";
+			echo "</span>";
 		}
 		echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		// Same thing for the 'Next Comic' links...
 		if ($pic < $filecount){	
-			echo "<a href=\"?p=".$next."\" id=\"cg_next\"><span>";
+			echo "<a href=\"?p=".$next."\" id=\"cg_next\">";
 			if ($backnext != 0) { echo "Next"; }
 			if ($arrows != 0) { echo " &raquo;"; }
-			echo "</span></a>";
+			echo "</a>";
 		} else {
-			echo "<span id=\"cg_next\"><span>";
+			echo "<span id=\"cg_next\">";
 			if ($backnext != 0) { echo "Next"; }
 			if ($arrows != 0) { echo " &raquo;"; }
-			echo "</span></span>";
+			echo "</span>";
 		}
 		// Print the link to the last image
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
-			if ($pic < $filecount){	echo "<span id=\"cg_last\"><a href=\"?p=".$filecount."\"><span>Last</span></a></span>"; }
-			else { echo "<span id=\"cg_last\"><span>Last</span></span>"; }
+			if ($pic < $filecount){	echo "<span id=\"cg_last\"><a href=\"?p=".$filecount."\">Last</a></span>"; }
+			else { echo "<span id=\"cg_last\">Last</span>"; }
 		}
 		echo "</p>\n";
 	}
