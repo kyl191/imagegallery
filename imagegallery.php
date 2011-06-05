@@ -332,7 +332,7 @@ if ($backnext != 0 || $arrows != 0){
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
 			echo "</a>";
-		} else { // Otherwise, we're showing the current pic, so there's no back link.
+		} else { // Otherwise, we're currently showing the first pic, so there's no back link.
 			echo "<span id=\"cg_back\">";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Back"; }
