@@ -226,7 +226,6 @@ if (!$pics)	{
 	reset($pics);
 }
 
-
 // Get the number of files in the folder for use in the navigation
 $filecount=count($pics);
 
