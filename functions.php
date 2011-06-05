@@ -49,11 +49,4 @@ function loadPage($id) {
   
   return;
 }
-
-function parseDate($file) {
-// Parse date from filename
-	$unixtime = DateTime::createFromFormat("Ymd", substr($file,0,8));
-	return $unixtime->format("l, F j")."<span style='font-size:xx-small; vertical-align:top;'>".$unixtime->format("S")."</span>".$unixtime->format(", Y");
-}
-
 ?>
