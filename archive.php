@@ -82,7 +82,7 @@ var cwfl="http://twokinds.keenspot.com/cwfl.htm";
 			<div class="arch-cont">
 			    <div class="comic">
     			    <?php
-					    include("comicgallery.php");
+					    include("imagegallery.php");
 				    ?>
 				</div>
 			</div>
