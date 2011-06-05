@@ -308,7 +308,7 @@ if (isset($_GET['debug'])){
 
 // Prepare the image source and links
 if ($pic < $filecount){ 
-	$image="\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" /></a></p>\n";
+	$image="\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" border=\"0\"/></a></p>\n";
 } else {
 	$image="\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
 }
@@ -329,40 +329,42 @@ if ($backnext != 0 || $arrows != 0){
 		echo "<p id=\"cg_nav1\">";
 		// Display the 'First Comic' Link if First/Last is enabled
 		if ($firstlast != 0){ 
-			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\">First</a>"; }
-			else { echo "<span id=\"cg_first\">First</span>"; }
+			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\"><span>First Comic</span></a>"; }
+			else { echo "<span id=\"cg_first\"><span>First Comic</span></span>"; }
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		}
 		// If the current pic is >1, print either a back arrow or a back link
 		if ($pic > 1){	
 			echo "<a href=\"?p=".$back."\" id=\"cg_back\">";
 			if ($arrows != 0) { echo "&laquo; "; }
-			if ($backnext != 0) { echo "Back"; }
+			if ($backnext != 0) { echo "Previous Comic"; }
 			echo "</a>";
-		} else { // Otherwise, we're showing the current pic, so there's no back link.
+		} else { // Otherwise, we're currently showing the first pic, so there's no back link.
 			echo "<span id=\"cg_back\">";
 			if ($arrows != 0) { echo "&laquo; "; }
-			if ($backnext != 0) { echo "Back"; }
+			if ($backnext != 0) { echo "Previous Comic"; }
 			echo "</span>";
 		}
 		echo "<span class=\"cg_divider\"> ".$divider." </span>";
+		echo "<a href=\"http://twokinds.keenspot.com/?pageid=3\">Archives</a>";
+		echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		// Same thing for the 'Next Comic' links...
-		if ($pic < $filecount){	
+		if ($pic < $filecount){
 			echo "<a href=\"?p=".$next."\" id=\"cg_next\">";
-			if ($backnext != 0) { echo "Next"; }
+			if ($backnext != 0) { echo "Next Comic"; }
 			if ($arrows != 0) { echo " &raquo;"; }
 			echo "</a>";
 		} else {
 			echo "<span id=\"cg_next\">";
-			if ($backnext != 0) { echo "Next"; }
+			if ($backnext != 0) { echo "Next Comic"; }
 			if ($arrows != 0) { echo " &raquo;"; }
 			echo "</span>";
 		}
 		// Print the link to the last image
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
-			if ($pic < $filecount){	echo "<span id=\"cg_last\"><a href=\"?p=".$filecount."\">Last</a></span>"; }
-			else { echo "<span id=\"cg_last\">Last</span>"; }
+			if ($pic < $filecount){	echo "<a href=\"index.php\" id=\"cg_last\"><span>Today's Comic</span></a>"; }
+			else { echo "<a href=\"index.php\" id=\"cg_last\"><span>Today's Comic</span></a>"; }
 		}
 		echo "</p>\n";
 	}
@@ -408,7 +410,7 @@ if (strcasecmp($copyright, "")!=0){
 	echo "&copy; ".$copyright." ".$divider." ";
 }
 // Attribution optional, but requested.
-echo "<br />Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a>";
+echo "<p class="arch-disc">Powered by <a href=\"http://code.kyl191.net/imagegallery/\">ImageGallery, a derivation of ComicGallery</a></p>";
 // Close the span
 echo "</p>\n";
 
