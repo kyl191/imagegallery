@@ -109,6 +109,11 @@ function readFileList($path){
 }
 // End filelist handling functions
 
+function parseDate($datestring){
+	$unixtime = DateTime::createFromFormat("Ymd", substr($datestring,0,8));
+	return $unixtime->format("l, F j")."<span style='font-size:xx-small; vertical-align:top;'>".$unixtime->format("S")."</span>".$unixtime->format(", Y");
+}
+
 // Check for a debug option. Because this doesn't expose sensitive data, a password shouldn't be needed.
 $debug = isset($_GET['debug']);
 
@@ -307,6 +312,8 @@ if ($pic < $filecount){
 } else {
 	$image="\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
 }
+
+echo "<p class='date'>Comic for ".parseDate($current)."</p>\n";
 
 // Note: The navigation bar doesn't move, the image does
 // Display the image before the navigation bar if configured that way
