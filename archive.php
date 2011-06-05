@@ -11,7 +11,6 @@
 
 <?php
     require_once("const.php");
-    require_once("functions.php");
 ?>
 <title><?php echo "Archive - ".$siteTitle; ?></title>
 
