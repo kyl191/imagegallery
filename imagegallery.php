@@ -1,7 +1,7 @@
 <?php 
 
 // ------------------------------------------------------------------------- //
-// Image Gallery v1.0b (based off Comic Gallery 1.2)                         //
+// Image Gallery (based off Comic Gallery 1.2)                               //
 // ------------------------------------------------------------------------- //
 // By kyl191                                                                 //
 // http://code.kyl191.net/imagegallery                                       //
