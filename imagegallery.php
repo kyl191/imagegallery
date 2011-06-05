@@ -261,6 +261,9 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 		// Since we need to work back, subtract the number provided from the number of files 
 		// Since it's already negative though (we checked for less than 1), simply add the negative number to the number of files
 		$pic = $filecount + $pic;
+		if ($pic < 1) {
+			$pic = 1;
+		}
 	}
 // Otherwise, he hasn't specified an image.
 // So start from the beginning or end, depending on the config
