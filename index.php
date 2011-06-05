@@ -26,7 +26,7 @@ pw_d.projectwonderful_background_color = "";
 <p>
 <a href="http://2kinds.com">Home</a> | <a href="http://2kinds.com/aboutme.htm">About</a> | <a href="http://2kinds.com/archive.htm">Archives</a> | <a href="http://2kinds.com/characters.htm">Characters</a> | <a href="http://twokinds.deviantart.com">Deviantart</a> | <a href="http://2kinds.com/Fanart/index.html">Fanart</a> | <a href="http://twokinds.net/forum">Forum</a> | <a href="http://webchat.nightstar.net/?nick=Twokinds-Guest.&channels=twokinds">IRC</a> | <a href="http://2kinds.com/links_2.htm">Links</a> | <a href="mailto:twokinds@gmail.com">Contact</a><br />
 <p>
-<?php include("comicgallery.php"); ?>
+<?php include("imagegallery.php"); ?>
 <p>
 <br>
 <!-- Beginning of Project Wonderful ad code: -->

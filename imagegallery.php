@@ -14,7 +14,7 @@
 // ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
-$imagedir="comics";
+$imagedir="images";
 
 // To start at the last image, use "last". To start from the first image, use "start".
 $startimage="last";
