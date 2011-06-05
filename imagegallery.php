@@ -221,20 +221,20 @@ if ($rebuild){
 $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
+// An array with 0 elements is deemed to be false. So if there's no images, it'll assume something's wrong with the filelist, and manually scan.
 if (!$pics)	{
-	echo "Oops, something went wrong with the cache. Don't worry though.<br>";
 	$pics = readFilesFromDrive($imagedir);
 	sort($pics);
 	reset($pics);
-	// And show the specific error if debug is enabled.
-	if ($debug){
-		echo "Error: Filelist couldn't be read, check the permissions on the folder & filelist file.<br>";
-	}
 }
 
 
 // Get the number of files in the folder for use in the navigation
 $filecount=count($pics);
+
+if ($filecount<1) {
+	echo "Hmm. We didn't find any images. Did you add your images to ".$imagedir."?<br />";
+}
 
 // If debug is enabled, take the time to print some info.
 if($debug){
