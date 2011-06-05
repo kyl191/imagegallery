@@ -321,8 +321,8 @@ if ($backnext != 0 || $arrows != 0){
 		echo "<p id=\"cg_nav1\">";
 		// Display the 'First Comic' Link if First/Last is enabled
 		if ($firstlast != 0){ 
-			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\"><span>First</span></a>"; }
-			else { echo "<span id=\"cg_first\"><span>First</span></span>"; }
+			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\">First</a>"; }
+			else { echo "<span id=\"cg_first\">First</span>"; }
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		}
 		// If the current pic is >1, print either a back arrow or a back link
