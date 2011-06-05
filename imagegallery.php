@@ -151,7 +151,6 @@ if(!$is_present){
 	}
 }
 
-
 $is_writable = is_writable($filelist);
 
 // Print a debug message if the filelist isn't present or writable.
@@ -162,7 +161,6 @@ if ($debug){
 	if (!$is_writable){
 		echo "Warning: File list ". $filelist ." is not writable. Check your permissions. (This file <b>must</b> be writable by the web server.)<br>";
 	}
-	
 }
 
 // Determine the type of rebuild procedure and check if a rebuild is required
