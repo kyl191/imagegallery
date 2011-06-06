@@ -9,8 +9,12 @@
 <meta name="description" content="A webcomic about a clueless hero, a mischievous tigress, an angsty warrior, and a gender-confused wolf." />
 <link rel="alternate" type="application/rss+xml" title="RSS" href="http://2kinds.com/tk_rss.php" />
 
-<?php
-    require_once("const.php");
+<?php    
+    try {
+        include_once("const.php");
+    } catch (Exception $e) {
+        $siteTitle = "Twokinds";
+    }
 ?>
 <title><?php echo "Archive - ".$siteTitle; ?></title>
 
