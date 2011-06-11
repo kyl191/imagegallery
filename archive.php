@@ -1,9 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php /* Keenspot Lazy-php caching mechanism. Used on twokinds and flipside. */
+
+header("Cache-Control: max-age=1800,s-maxage=1800,must-revalidate, proxy-revalidate");
+$directpageid=0;
+$cdncname="http://cdn.twokinds.keenspot.com";
+
+$cachefilename="/spot/twokinds/public_html/cache/comic0.html";
+
+if(isset($_GET["p"]) && is_numeric($_GET["p"])){
+$directpageid=$_GET["p"];
+}
+
+$cachefilename="/spot/twokinds/public_html/cache/comic".$directpageid.".html";
+
+
+
+
+if ( file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("const.php"))
+{
+$lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
+$etag  = md5($cachefilename.'.'.$lastmod);
+$retag = "BEEF";
+//$lastmod = gmdate('r', filemtime($cachefilename));
+$retag = "BEEF";
+if(isset($_SERVER['HTTP_IF_NONE_MATCH'])){
+$retag=$_SERVER['HTTP_IF_NONE_MATCH'];
+}
+$lastdate=@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
+$thisdate=@strtotime($lastmod);
+header("Last-Modified: $lastmod");
+header("ETag: \"$etag\"");
+if (($thisdate<=$lastdate ) ||$etag==$retag)
+{
+header("HTTP/1.1 304 Not Modified");
+exit;
+}
+    $content = file_get_contents($cachefilename);
+    echo $content;
+echo "<!--".$lastmod."-->";
+
+}
+else
+
+{
+
+ob_start();
+
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
-<link rel="stylesheet" type="text/css" href="http://cdn.twokinds.keenspot.com/style.css" />
-<link rel="stylesheet" type="text/css" href="http://cdn.twokinds.keenspot.com/archive.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $cdncname ?>/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $cdncname ?>/archive.css" />
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <meta name="description" content="A webcomic about a clueless hero, a mischievous tigress, an angsty warrior, and a gender-confused wolf." />
@@ -122,3 +169,19 @@ qacct:"p-0bpH4thh8w_tE"
 </script>
 </body>
 </html>
+<?php
+
+$content = ob_get_contents();
+ob_end_clean();
+file_put_contents($cachefilename,$content);
+$lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
+$etag  = md5($cachefilename.'.'.$lastmod);
+
+header("Last-Modified: ".$lastmod);
+header("ETag: \"$etag\"");
+echo $content;
+ob_end_flush();
+
+}
+
+?>
