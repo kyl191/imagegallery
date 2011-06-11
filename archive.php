@@ -1,12 +1,12 @@
 <?php /* Keenspot Lazy-php caching mechanism. Used on twokinds and flipside. */
 
 header("Cache-Control: max-age=1800,s-maxage=1800,must-revalidate, proxy-revalidate");
-$directpageid=0;
 $cdncname="http://cdn.twokinds.keenspot.com";
-$cachefilename="/spot/twokinds/public_html/cache/comic0.html";
 
 if(isset($_GET["p"]) && is_numeric($_GET["p"])){
     $directpageid=$_GET["p"];
+} else {
+    $directpageid=0;
 }
 
 $cachefilename="/spot/twokinds/public_html/cache/comic".$directpageid.".html";
