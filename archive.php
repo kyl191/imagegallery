@@ -10,7 +10,8 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
 
 <?php
-    require_once("const.php");
+    $siteTitle = "Twokinds";
+    @include_once("const.php");
 ?>
 <title><?php echo "Archive - ".$siteTitle; ?></title>
 
