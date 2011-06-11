@@ -226,7 +226,7 @@ $pics = readFileList($filelist);
 
 // In the event that something does screw up, tell the user, then fall back to scanning the drive manually
 // An array with 0 elements is deemed to be false. So if there's no images, it'll assume something's wrong with the filelist, and manually scan.
-if (!$pics)    {
+if (!$pics) {
     $pics = readFilesFromDrive($imagedir);
     sort($pics);
     reset($pics);
