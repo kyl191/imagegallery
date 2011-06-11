@@ -14,7 +14,7 @@
 // ------------------------------------------------------------------------- //
 
 // Your images directory, relative to the page calling this script
-$imagedir="images";
+$imagedir="comics";
 
 // To start at the last image, use "last". To start from the first image, use "start".
 $startimage="last";
@@ -62,7 +62,7 @@ $rebuild_time=300;
 
 // The folder from which all images should be served
 // Use if you have a static image server somewhere else, otherwise leave it blank.
-$base = "";
+$base = "http://cdn.twokinds.keenspot.com/";
 
 // ------------------------------------------------------------------------- //
 // Do not edit below this line.
@@ -308,10 +308,17 @@ if (isset($_GET['debug'])){
 }
 
 // Prepare the image source and links
+$comicwidth=0;
+$comicheight=0;
+$adden="";
+if($comicwidth==0 || $comicheight==0){
+list($comicwidth, $comicheight, $itype, $iattr)= getimagesize($imagedir."/".$current);
+$adden="style=\"border:0px;width:".$comicwidth."px;height:".$comicheight."px\"";
+}
 if ($pic < $filecount){ 
-	$image="\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" border=\"0\"/></a></p>\n";
+	$image="\n<p id=\"cg_img\"><a href=\"?p=".$next."\"><img ".$adden." src=\"".$base.$imagedir."/".$current."\" alt=\"Next\" /></a></p>\n";
 } else {
-	$image="\n<p id=\"cg_img\"><img src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
+	$image="\n<p id=\"cg_img\"><img ".$adden." src=\"".$base.$imagedir."/".$current."\" alt=\"End\" /></p>\n";
 }
 
 echo "<p class='date'>Comic for ".parseDate($current)."</p>\n";
@@ -330,42 +337,44 @@ if ($backnext != 0 || $arrows != 0){
 		echo "<p id=\"cg_nav1\">";
 		// Display the 'First Comic' Link if First/Last is enabled
 		if ($firstlast != 0){ 
-			if ($pic > 1){	echo "<a href=\"?p=1\" id=\"cg_first\"><span>First Comic</span></a>"; }
+			if ($pic > 1){ echo "<a href=\"http://twokinds.keenspot.com/archive.php?p=1\" id=\"cg_first\"><span>First Comic</span></a>"; }
 			else { echo "<span id=\"cg_first\"><span>First Comic</span></span>"; }
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		}
 		// If the current pic is >1, print either a back arrow or a back link
 		if ($pic > 1){	
-			echo "<a href=\"?p=".$back."\" id=\"cg_back\">";
+			echo "<a href=\"http://twokinds.keenspot.com/archive.php?p=".$back."\" id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Previous Comic"; }
-			echo "</a>";
+			echo "</span></a>";
 		} else { // Otherwise, we're currently showing the first pic, so there's no back link.
-			echo "<span id=\"cg_back\">";
+			echo "<span id=\"cg_back\"><span>";
 			if ($arrows != 0) { echo "&laquo; "; }
 			if ($backnext != 0) { echo "Previous Comic"; }
-			echo "</span>";
+			echo "</span></span>";
 		}
+		// Print a link to the archive page
 		echo "<span class=\"cg_divider\"> ".$divider." </span>";
 		echo "<a href=\"http://twokinds.keenspot.com/?pageid=3\">Archives</a>";
 		echo "<span class=\"cg_divider\"> ".$divider." </span>";
+		
 		// Same thing for the 'Next Comic' links...
 		if ($pic < $filecount){
-			echo "<a href=\"?p=".$next."\" id=\"cg_next\">";
+			echo "<a href=\"http://twokinds.keenspot.com/archive.php?p=".$next."\" id=\"cg_next\"><span>";
 			if ($backnext != 0) { echo "Next Comic"; }
 			if ($arrows != 0) { echo " &raquo;"; }
-			echo "</a>";
+			echo "</span></a>";
 		} else {
-			echo "<span id=\"cg_next\">";
+			echo "<span id=\"cg_next\"><span>";
 			if ($backnext != 0) { echo "Next Comic"; }
 			if ($arrows != 0) { echo " &raquo;"; }
-			echo "</span>";
+			echo "</span></span>";
 		}
 		// Print the link to the last image
 		if ($firstlast != 0){ 
 			echo "<span class=\"cg_divider\"> ".$divider." </span>";
-			if ($pic < $filecount){	echo "<a href=\"index.php\" id=\"cg_last\"><span>Today's Comic</span></a>"; }
-			else { echo "<a href=\"index.php\" id=\"cg_last\"><span>Today's Comic</span></a>"; }
+			if ($pic < $filecount){	echo "<a href=\"http://twokinds.keenspot.com/index.php\" id=\"cg_last\"><span>Today's Comic</span></a>"; }
+			else { echo "<a href=\"http://twokinds.keenspot.com/index.php\" id=\"cg_last\"><span>Today's Comic</span></a></span>"; }
 		}
 		echo "</p>\n";
 	}

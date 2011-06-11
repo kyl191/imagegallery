@@ -7,7 +7,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <meta name="description" content="A webcomic about a clueless hero, a mischievous tigress, an angsty warrior, and a gender-confused wolf." />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://2kinds.com/tk_rss.php" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.php" />
 
 <?php
     require_once("const.php");
