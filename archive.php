@@ -8,13 +8,12 @@ if(isset($_GET["p"]) && is_numeric($_GET["p"])){
 } else {
     $directpageid=0;
 }
-
 $cachefilename="/spot/twokinds/public_html/cache/comic".$directpageid.".html";
+
 if (file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("archive.php")){
     $lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
     $etag  = md5($cachefilename.'.'.$lastmod);
     $retag = "BEEF";
-    //$lastmod = gmdate('r', filemtime($cachefilename));
     $retag = "BEEF";
     if(isset($_SERVER['HTTP_IF_NONE_MATCH'])){
         $retag=$_SERVER['HTTP_IF_NONE_MATCH'];
