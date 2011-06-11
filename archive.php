@@ -3,49 +3,37 @@
 header("Cache-Control: max-age=1800,s-maxage=1800,must-revalidate, proxy-revalidate");
 $directpageid=0;
 $cdncname="http://cdn.twokinds.keenspot.com";
-
 $cachefilename="/spot/twokinds/public_html/cache/comic0.html";
 
 if(isset($_GET["p"]) && is_numeric($_GET["p"])){
-$directpageid=$_GET["p"];
+    $directpageid=$_GET["p"];
 }
 
 $cachefilename="/spot/twokinds/public_html/cache/comic".$directpageid.".html";
-
-
-
-
-if ( file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("const.php"))
-{
-$lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
-$etag  = md5($cachefilename.'.'.$lastmod);
-$retag = "BEEF";
-//$lastmod = gmdate('r', filemtime($cachefilename));
-$retag = "BEEF";
-if(isset($_SERVER['HTTP_IF_NONE_MATCH'])){
-$retag=$_SERVER['HTTP_IF_NONE_MATCH'];
-}
-$lastdate=@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
-$thisdate=@strtotime($lastmod);
-header("Last-Modified: $lastmod");
-header("ETag: \"$etag\"");
-if (($thisdate<=$lastdate ) ||$etag==$retag)
-{
-header("HTTP/1.1 304 Not Modified");
-exit;
-}
+if (file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("archive.php")){
+    $lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
+    $etag  = md5($cachefilename.'.'.$lastmod);
+    $retag = "BEEF";
+    //$lastmod = gmdate('r', filemtime($cachefilename));
+    $retag = "BEEF";
+    if(isset($_SERVER['HTTP_IF_NONE_MATCH'])){
+        $retag=$_SERVER['HTTP_IF_NONE_MATCH'];
+    }
+    $lastdate=@strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
+    $thisdate=@strtotime($lastmod);
+    header("Last-Modified: $lastmod");
+    header("ETag: \"$etag\"");
+    if (($thisdate<=$lastdate )||$etag==$retag){
+        header("HTTP/1.1 304 Not Modified");
+        exit;
+    }
     $content = file_get_contents($cachefilename);
     echo $content;
-echo "<!--".$lastmod."-->";
-
-}
-else
-
-{
-
+    echo "<!--".$lastmod."-->";
+} else {
 ob_start();
-
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
