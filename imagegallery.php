@@ -23,7 +23,7 @@ $startimage="last";
 $copyright="";
 
 // File to store the list of filenames
-$filelist = "imagegalleryfilelist.dat";
+$filelist = "cache/imagegalleryfilelist.dat";
 
 // Creative Commons license, for none use " "
 // example: "http://creativecommons.org/licenses/by-nc-sa/3.0/deed"
