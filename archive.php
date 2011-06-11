@@ -10,7 +10,7 @@ if(isset($_GET["p"]) && is_numeric($_GET["p"])){
 }
 $cachefilename="/spot/twokinds/public_html/cache/comic".$directpageid.".html";
 
-if (file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("archive.php")){
+if (file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("const.php")){
     $lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
     $etag  = md5($cachefilename.'.'.$lastmod);
     $retag = "BEEF";
