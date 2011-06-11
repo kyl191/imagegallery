@@ -14,7 +14,6 @@ if (file_exists($cachefilename) && filemtime($cachefilename)>= filemtime("archiv
     $lastmod = gmdate('D, d M Y H:i:s', filemtime($cachefilename)) . ' GMT';
     $etag  = md5($cachefilename.'.'.$lastmod);
     $retag = "BEEF";
-    $retag = "BEEF";
     if(isset($_SERVER['HTTP_IF_NONE_MATCH'])){
         $retag=$_SERVER['HTTP_IF_NONE_MATCH'];
     }
