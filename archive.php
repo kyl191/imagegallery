@@ -52,7 +52,7 @@ scpt.parentNode.insertBefore(elem, scpt);
 
     <div class="archive-cont">
 			
-			<div class="arch-cont" style="width:950px;">
+			<div class="arch-cont" style="position:absolute;top:140px;width:950px;">
 			    <div class="comic">
     			    <?php
 					    include("imagegallery.php");
