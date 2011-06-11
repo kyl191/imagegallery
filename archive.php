@@ -154,7 +154,6 @@ qacct:"p-0bpH4thh8w_tE"
 </body>
 </html>
 <?php
-
 $content = ob_get_contents();
 ob_end_clean();
 file_put_contents($cachefilename,$content);
@@ -165,7 +164,5 @@ header("Last-Modified: ".$lastmod);
 header("ETag: \"$etag\"");
 echo $content;
 ob_end_flush();
-
 }
-
 ?>
