@@ -81,20 +81,19 @@ scpt.parentNode.insertBefore(elem, scpt);
 </head>
 <body>
 
-<script  type='text/javascript' src='http://www.keenspot.com/ks_header.js'></script>
+<script type='text/javascript' src='http://www.keenspot.com/ks_header.js'></script>
 <noscript><div><a href="http://www.keenspot.com/"><img src="http://www.keenspot.com/images/headerbar-adblockers.gif" width="519" height="32"  alt="This site is supported by advertising Revenue" /></a></div></noscript>
 <!-- Header End -->
 
     <div class="archive-cont">
-			
-			<div class="arch-cont" style="position:absolute;top:140px;width:950px;">
-			    <div class="comic">
-    			    <?php
-					    include("imagegallery.php");
-				    ?>
-				</div>
-			</div>
-		<div class="advertisement ad-top arch-topad"><script type='text/javascript'>
+            <div class="arch-cont" style="position:absolute;top:140px;width:950px;">
+                <div class="comic">
+                    <?php
+                        include("imagegallery.php");
+                    ?>
+                </div>
+            </div>
+        <div class="advertisement ad-top arch-topad"><script type='text/javascript'>
 <!--
 //<![CDATA[
 var cwfl="http://twokinds.keenspot.com/cwfl.htm";
@@ -102,26 +101,25 @@ var cwfl="http://twokinds.keenspot.com/cwfl.htm";
 -->
 </script><script type="text/javascript" src="http://www.keenspot.com/adp.php?&amp;type=leaderboard&amp;cat=general&amp;js=1&amp;out=twokinds">
 </script></div>
-		<div class="arch-header">
-		    <span style="color: #00FFFF;">Two</span><span style="color: #FF991E;">kinds</span> Archive
-		</div>
+        <div class="arch-header">
+            <span style="color: #00FFFF;">Two</span><span style="color: #FF991E;">kinds</span> Archive
+        </div>
         <div class="advertisement">
-		<div class="arch-sidebar">
-		    <div class="adv adv-arch">
+        <div class="arch-sidebar">
+            <div class="adv adv-arch">
 <script type="text/javascript" src="http://www.keenspot.com/adp.php?&amp;type=w_sky&amp;cat=general&amp;js=1&amp;out=twokinds">
 </script></div>
-				    <div class="keenspot">
-					<script src="http://www.keenspot.com/ks_newsbox.js" type="text/javascript"></script>
-			</div>
-		    </div>
-	    </div>
+                    <div class="keenspot">
+                    <script src="http://www.keenspot.com/ks_newsbox.js" type="text/javascript"></script>
+            </div>
+            </div>
+        </div>
 
-				    
-		<div style="clear: both;"></div>
-		<div class="advertisement"><div class="adv2 adv2-archive">
+        <div style="clear: both;"></div>
+        <div class="advertisement"><div class="adv2 adv2-archive">
 <script type="text/javascript" src="http://www.keenspot.com/adp.php?&amp;type=m_rect&amp;cat=general&amp;js=1&amp;out=twokinds">
 </script></div></div>
-	</div>
+    </div>
 
 <!-- Start Quantcast tag, part 2 -->
 <script type="text/javascript">
