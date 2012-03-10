@@ -44,7 +44,6 @@ ob_start();
 
 <?php
     $siteTitle = "Twokinds";
-    @include_once("const.php");
 ?>
 <title><?php echo "Archive - ".$siteTitle; ?></title>
 
