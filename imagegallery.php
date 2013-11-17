@@ -355,7 +355,7 @@ if ($backnext != 0 || $arrows != 0){
         }
         // Print a link to the archive page
         echo "<span class=\"cg_divider\"> ".$divider." </span>";
-        echo "<a href=\"http://twokinds.keenspot.com/?pageid=3\">Archives</a>";
+        echo "<a href=\"http://twokinds.keenspot.com/?p=archive\">Archives</a>";
         echo "<span class=\"cg_divider\"> ".$divider." </span>";
         
         // Same thing for the 'Next Comic' links...
